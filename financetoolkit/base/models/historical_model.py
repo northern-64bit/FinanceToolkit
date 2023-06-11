@@ -3,14 +3,17 @@ __docformat__ = "numpy"
 
 from datetime import datetime, timedelta
 
+from typing import List
+
+
 import pandas as pd
 
 
 def get_historical_data(
-    tickers: list[str] | str,
-    start: str = None,
-    end: str = None,
-    interval: str = "1d",
+    tickers,
+    start = None,
+    end = None,
+    interval = "1d",
 ):
     """
     Retrieves historical stock data for the given ticker(s) from Yahoo! Finance API for a specified period.
@@ -90,7 +93,7 @@ def get_historical_data(
     return historical_data
 
 
-def convert_daily_to_yearly(daily_historical_data: pd.DataFrame):
+def convert_daily_to_yearly(daily_historical_data):
     """
     Converts daily historical data to yearly historical data.
 

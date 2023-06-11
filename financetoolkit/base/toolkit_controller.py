@@ -4,6 +4,8 @@ __docformat__ = "numpy"
 
 import pandas as pd
 
+from warnings import warn
+
 from financetoolkit.base.models.fundamentals_model import (
     get_enterprise as _get_enterprise,
     get_financial_statements as _get_financial_statements,
@@ -40,12 +42,12 @@ class Toolkit:
     def __init__(
         self,
         tickers,
-        api_key: str = "",
-        historical: pd.DataFrame = pd.DataFrame(),
-        balance: pd.DataFrame = pd.DataFrame(),
-        income: pd.DataFrame = pd.DataFrame(),
-        cash: pd.DataFrame = pd.DataFrame(),
-        format_location: str = "",
+        api_key = "",
+        historical = pd.DataFrame(),
+        balance = pd.DataFrame(),
+        income = pd.DataFrame(),
+        cash = pd.DataFrame(),
+        format_location = "",
         reverse_dates: bool = False,
     ):
         """
@@ -72,50 +74,50 @@ class Toolkit:
 
         if self._api_key:
             # Initialization of FinancialModelingPrep Variables
-            self._profile: pd.DataFrame = pd.DataFrame()
-            self._quote: pd.DataFrame = pd.DataFrame()
-            self._enterprise: pd.DataFrame = pd.DataFrame()
-            self._rating: pd.DataFrame = pd.DataFrame()
+            self._profile = pd.DataFrame()
+            self._quote = pd.DataFrame()
+            self._enterprise = pd.DataFrame()
+            self._rating = pd.DataFrame()
 
         # Initialization of Historical Variables
-        self._daily_historical_data: pd.DataFrame = (
+        self._daily_historical_data = (
             historical if not historical.empty else pd.DataFrame()
         )
-        self._weekly_historical_data: pd.DataFrame = pd.DataFrame()
-        self._monthly_historical_data: pd.DataFrame = pd.DataFrame()
-        self._yearly_historical_data: pd.DataFrame = (
+        self._weekly_historical_data = pd.DataFrame()
+        self._monthly_historical_data = pd.DataFrame()
+        self._yearly_historical_data = (
             _convert_daily_to_yearly(self._daily_historical_data)
             if not historical.empty
             else pd.DataFrame()
         )
 
         # Initialization of Normalization Variables
-        self._balance_sheet_statement_generic: pd.DataFrame = _read_normalization_file(
+        self._balance_sheet_statement_generic = _read_normalization_file(
             "balance", format_location
         )
-        self._income_statement_generic: pd.DataFrame = _read_normalization_file(
+        self._income_statement_generic = _read_normalization_file(
             "income", format_location
         )
-        self._cash_flow_statement_generic: pd.DataFrame = _read_normalization_file(
+        self._cash_flow_statement_generic = _read_normalization_file(
             "cash", format_location
         )
 
         # Initialization of Financial Statements
-        self._balance_sheet_statement: pd.DataFrame = (
+        self._balance_sheet_statement = (
             _convert_financial_statements(
                 balance, self._balance_sheet_statement_generic, reverse_dates
             )
             if not balance.empty
             else pd.DataFrame()
         )
-        self._income_statement: pd.DataFrame = (
+        self._income_statement = (
             _convert_financial_statements(
                 income, self._income_statement_generic, reverse_dates
             )
             if not income.empty
             else pd.DataFrame()
         )
-        self._cash_flow_statement: pd.DataFrame = (
+        self._cash_flow_statement = (
             _convert_financial_statements(
                 cash, self._cash_flow_statement_generic, reverse_dates
             )
@@ -123,12 +125,18 @@ class Toolkit:
             else pd.DataFrame()
         )
 
+        warn(
+            "This version of the Finance Toolkit is deprecated. Finance Toolkit 1.0.2 and onwards require Python 3.10 and higher. Please update to the latest version of Python and the Finance Toolkit.",
+            DeprecationWarning,
+            stacklevel=2,
+        )
+
     @property
     def ratios(self):
         """
         Gives access to financial ratios.
         """
-        empty_data: list = []
+        empty_data = []
 
         if not self._api_key and (
             self._balance_sheet_statement.empty
@@ -171,7 +179,7 @@ class Toolkit:
         """
         Gives access to financial models.
         """
-        empty_data: list = []
+        empty_data = []
 
         if not self._api_key and (
             self._balance_sheet_statement.empty
@@ -247,7 +255,7 @@ class Toolkit:
 
         return self._quote
 
-    def get_enterprise(self, quarter: str = False, limit: str = 100):
+    def get_enterprise(self, quarter = False, limit = 100):
         """
         Returns a pandas dataframe containing the enterprise value information for the specified tickers.
 
@@ -273,7 +281,7 @@ class Toolkit:
 
         return self._enterprise
 
-    def get_rating(self, limit: int = 100):
+    def get_rating(self, limit = 100):
         """
         Returns a pandas dataframe containing the stock rating information for the specified tickers.
 
@@ -296,7 +304,7 @@ class Toolkit:
 
         return self._rating
 
-    def get_historical_data(self, start=None, end=None, period: str = "daily"):
+    def get_historical_data(self, start=None, end=None, period = "daily"):
         """
         Returns a pandas dataframe containing the historical data for the specified tickers.
 
@@ -372,7 +380,7 @@ class Toolkit:
     def get_balance_sheet_statement(
         self,
         quarter=False,
-        limit: int = 100,
+        limit = 100,
         overwrite: bool = False,
     ):
         """
@@ -407,7 +415,7 @@ class Toolkit:
     def get_income_statement(
         self,
         quarter=False,
-        limit: int = 100,
+        limit = 100,
         overwrite: bool = False,
     ):
         """
@@ -442,7 +450,7 @@ class Toolkit:
     def get_cash_flow_statement(
         self,
         quarter=False,
-        limit: int = 100,
+        limit = 100,
         overwrite: bool = False,
     ):
         """
@@ -474,7 +482,7 @@ class Toolkit:
 
         return self._cash_flow_statement
 
-    def get_normalization_files(self, path: str = ""):
+    def get_normalization_files(self, path = ""):
         """
         Copies the normalization files to a folder based on path. By default, this is the path
         of the 'Downloads' folder.

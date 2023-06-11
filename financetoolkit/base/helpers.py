@@ -4,7 +4,7 @@ __docformat__ = "numpy"
 import pandas as pd
 
 
-def combine_dataframes(tickers: str | list[str], *args) -> pd.DataFrame:
+def combine_dataframes(tickers, *args):
     """
     Combine the dataframes from different companies of the same financial statement,
     e.g. the balance sheet statement, into a single dataframe.

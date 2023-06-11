@@ -1,7 +1,7 @@
 import json
 import os
 import pathlib
-from typing import Any
+from typing import Any, List
 
 import pandas as pd
 import pytest
@@ -20,8 +20,8 @@ This is a modified version of the original code snippet
 to fit the needs of the financetoolkit.
 """
 
-DISPLAY_LIMIT: int = 500
-EXTENSIONS_ALLOWED: list[str] = ["csv", "json", "txt"]
+DISPLAY_LIMIT = 500
+EXTENSIONS_ALLOWED = ["csv", "json", "txt"]
 EXTENSIONS_MATCHING: dict[str, list[type]] = {
     "csv": [pd.DataFrame, pd.Series],
     "json": [bool, dict, float, int, list, tuple],
@@ -33,7 +33,7 @@ EXTENSIONS_MATCHING: dict[str, list[type]] = {
 
 class Record:
     @staticmethod
-    def extract_string(data: Any, **kwargs) -> str:
+    def extract_string(data: Any, **kwargs) :
         if isinstance(data, tuple(EXTENSIONS_MATCHING["txt"])):
             string_value = data
         elif isinstance(data, tuple(EXTENSIONS_MATCHING["csv"])):
@@ -50,7 +50,7 @@ class Record:
         return string_value.replace("\r\n", "\n")
 
     @staticmethod
-    def load_string(path: str) -> str | None:
+    def load_string(path):
         if os.path.exists(path):
             with open(
                 file=path,
@@ -62,15 +62,15 @@ class Record:
             return None
 
     @property
-    def captured(self) -> str:
+    def captured(self) :
         return self.__captured
 
     @property
-    def strip(self) -> bool:
+    def strip(self) :
         return self.__strip
 
     @property
-    def record_changed(self) -> bool:
+    def record_changed(self) :
         if self.__recorded is None:
             changed = True
         elif self.__strip and self.__recorded.strip() != self.__captured.strip():
@@ -83,15 +83,15 @@ class Record:
         return changed
 
     @property
-    def record_exists(self) -> bool:
+    def record_exists(self) :
         return self.__recorded is not None
 
     @property
-    def record_path(self) -> str:
+    def record_path(self) :
         return self.__record_path
 
     @property
-    def recorded(self) -> str | None:
+    def recorded(self):
         return self.__recorded
 
     def recorded_reload(self):
@@ -99,8 +99,8 @@ class Record:
         self.__recorded = self.load_string(path=record_path)
 
     def __init__(
-        self, captured: Any, record_path: str, strip: bool = False, **kwargs
-    ) -> None:
+        self, captured: Any, record_path, strip: bool = False, **kwargs
+    ) :
         self.__captured = self.extract_string(data=captured, **kwargs)
         self.__record_path = record_path
         self.__strip = strip
@@ -137,12 +137,12 @@ class PathTemplate:
                 return extension
         raise Exception(f"No extension found for this type : {type(data)}")
 
-    def __init__(self, module_dir: str, module_name: str, test_name: str) -> None:
+    def __init__(self, module_dir, module_name, test_name) :
         self.__module_dir = module_dir
         self.__module_name = module_name
         self.__test_name = test_name
 
-    def build_path_by_extension(self, extension: str, index: int = 0):
+    def build_path_by_extension(self, extension, index = 0):
         if extension not in EXTENSIONS_ALLOWED:
             raise Exception(f"Unsupported extension : {extension}")
 
@@ -156,22 +156,22 @@ class PathTemplate:
 
         return path
 
-    def build_path_by_data(self, data: Any, index: int = 0):
+    def build_path_by_data(self, data: Any, index = 0):
         extension = self.find_extension(data=data)
         return self.build_path_by_extension(extension=extension, index=index)
 
 
 class Recorder:
     @property
-    def display_limit(self) -> int:
+    def display_limit(self) :
         return self.__display_limit
 
     @display_limit.setter
-    def display_limit(self, display_limit: int):
+    def display_limit(self, display_limit):
         self.__display_limit = display_limit
 
     @property
-    def rewrite_expected(self) -> bool:
+    def rewrite_expected(self) :
         return self.__rewrite_expected
 
     @rewrite_expected.setter
@@ -183,20 +183,20 @@ class Recorder:
         return self.__path_template
 
     @property
-    def record_mode(self) -> str:
+    def record_mode(self) :
         return self.__record_mode
 
     @record_mode.setter
-    def record_mode(self, record_mode: str):
+    def record_mode(self, record_mode):
         self.__record_mode = record_mode
 
     def __init__(
         self,
         path_template: PathTemplate,
-        record_mode: str,
-        display_limit: int = DISPLAY_LIMIT,
+        record_mode,
+        display_limit = DISPLAY_LIMIT,
         rewrite_expected: bool = False,
-    ) -> None:
+    ) :
         self.__path_template = path_template
         self.__record_mode = record_mode
         self.__display_limit = display_limit
@@ -230,7 +230,7 @@ class Recorder:
                     f"Actual    : {record.captured[:self.display_limit]}\n"
                 )
 
-    def assert_in_list(self, in_list: list[str]):
+    def assert_in_list(self, in_list):
         record_list = self.__record_list
 
         for record in record_list:
@@ -264,8 +264,8 @@ class Recorder:
 
 
 def build_path_by_extension(
-    request: SubRequest, extension: str, create_folder: bool = False
-) -> str:
+    request: SubRequest, extension, create_folder: bool = False
+) :
     # SETUP PATH TEMPLATE
     module_dir = request.node.fspath.dirname
     module_name = request.node.fspath.purebasename
@@ -296,7 +296,7 @@ def merge_markers_kwargs(markers: list[Mark]) -> dict[str, Any]:
 
 
 def record_stdout_format_kwargs(
-    test_name: str, record_mode: str, record_stdout_markers: list[Mark]
+    test_name, record_mode, record_stdout_markers: list[Mark]
 ) -> dict[str, Any]:
     kwargs = merge_markers_kwargs(record_stdout_markers)
 
@@ -341,23 +341,23 @@ def pytest_addoption(parser: Parser):
 
 
 @pytest.fixture(scope="session")  # type: ignore
-def rewrite_expected(request: SubRequest) -> bool:
+def rewrite_expected(request: SubRequest) :
     """Force rewriting of all expected data by : `record_stdout` and `recorder`."""
     return request.config.getoption("--rewrite-expected")
 
 
 @pytest.fixture
-def default_csv_path(request: SubRequest) -> str:
+def default_csv_path(request: SubRequest) :
     return build_path_by_extension(request=request, extension="csv", create_folder=True)
 
 
 @pytest.fixture
-def default_txt_path(request: SubRequest) -> str:
+def default_txt_path(request: SubRequest) :
     return build_path_by_extension(request=request, extension="txt", create_folder=True)
 
 
 @pytest.fixture
-def default_json_path(request: SubRequest) -> str:
+def default_json_path(request: SubRequest) :
     return build_path_by_extension(
         request=request, extension="json", create_folder=True
     )
@@ -374,7 +374,7 @@ def record_stdout(
     disable_recording: bool,
     rewrite_expected: bool,
     record_stdout_markers: list[Mark],
-    record_mode: str,
+    record_mode,
     request: SubRequest,
 ):
     marker = request.node.get_closest_marker("record_stdout")
@@ -442,7 +442,7 @@ def record_stdout(
 def recorder(
     disable_recording: bool,
     rewrite_expected: bool,
-    record_mode: str,
+    record_mode,
     request: SubRequest,
 ):
     marker_record_stdout = request.node.get_closest_marker("record_stdout")

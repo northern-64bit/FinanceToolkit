@@ -3,6 +3,9 @@ __docformat__ = "numpy"
 
 import pandas as pd
 
+from typing import List
+
+
 from financetoolkit.base.helpers import handle_errors
 from financetoolkit.ratios import (
     efficiency,
@@ -22,11 +25,11 @@ class Ratios:
 
     def __init__(
         self,
-        tickers: str | list[str],
-        historical: pd.DataFrame,
-        balance: pd.DataFrame,
-        income: pd.DataFrame,
-        cash: pd.DataFrame,
+        tickers,
+        historical,
+        balance,
+        income,
+        cash,
     ):
         self._tickers = tickers
         self._yearly_historical_data = historical
@@ -35,15 +38,15 @@ class Ratios:
         self._cash_flow_statement = cash
 
         # Initialization of Fundamentals Variables
-        self._all_ratios: pd.DataFrame = pd.DataFrame()
-        self._efficiency_ratios: pd.DataFrame = pd.DataFrame()
-        self._liquidity_ratios: pd.DataFrame = pd.DataFrame()
-        self._profitability_ratios: pd.DataFrame = pd.DataFrame()
-        self._solvency_ratios: pd.DataFrame = pd.DataFrame()
-        self._valuation_ratios: pd.DataFrame = pd.DataFrame()
+        self._all_ratios = pd.DataFrame()
+        self._efficiency_ratios = pd.DataFrame()
+        self._liquidity_ratios = pd.DataFrame()
+        self._profitability_ratios = pd.DataFrame()
+        self._solvency_ratios = pd.DataFrame()
+        self._valuation_ratios = pd.DataFrame()
 
     def collect_all_ratios(
-        self, include_dividends: bool = False, diluted: bool = True, days: int = 365
+        self, include_dividends: bool = False, diluted: bool = True, days = 365
     ):
         """
         Calculates all Ratios based on the data provided.
@@ -73,7 +76,7 @@ class Ratios:
 
         return self._all_ratios
 
-    def collect_efficiency_ratios(self, days: int = 365):
+    def collect_efficiency_ratios(self, days = 365):
         """
         Calculates all Efficiency Ratios based on the data provided.
         """
@@ -351,7 +354,7 @@ class Ratios:
         )
 
     @handle_errors
-    def get_days_of_inventory_outstanding(self, days: int = 365):
+    def get_days_of_inventory_outstanding(self, days = 365):
         """
         Calculate the days sales in inventory ratio, an efficiency ratio that measures
         how long it takes a company to sell its inventory.
@@ -364,7 +367,7 @@ class Ratios:
         )
 
     @handle_errors
-    def get_days_of_sales_outstanding(self, days: int = 365):
+    def get_days_of_sales_outstanding(self, days = 365):
         """
         Calculate the days of sales outstanding, an efficiency ratio that measures
         the average number of days it takes a company to collect payment on its
@@ -380,7 +383,7 @@ class Ratios:
         )
 
     @handle_errors
-    def get_operating_cycle(self, days: int = 365):
+    def get_operating_cycle(self, days = 365):
         """
         Calculate the operating cycle, an efficiency ratio that measures the average
         number of days it takes a company to turn its inventory into cash.
@@ -415,7 +418,7 @@ class Ratios:
         )
 
     @handle_errors
-    def get_days_of_accounts_payable_outstanding(self, days: int = 365):
+    def get_days_of_accounts_payable_outstanding(self, days = 365):
         """
         Calculate the days payables outstanding, an efficiency ratio that measures the
         number of days it takes a company to pay its suppliers.
@@ -428,7 +431,7 @@ class Ratios:
         )
 
     @handle_errors
-    def get_cash_conversion_cycle(self, days: int = 365):
+    def get_cash_conversion_cycle(self, days = 365):
         """
         Calculate the Cash Conversion Cycle, which measures the amount of time it takes for a company to convert
         its investments in inventory and accounts receivable into cash, while considering the time it takes to pay

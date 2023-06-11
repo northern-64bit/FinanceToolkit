@@ -4,6 +4,9 @@ __docformat__ = "numpy"
 
 import pandas as pd
 
+from typing import List
+
+
 from financetoolkit.base.models.normalization_model import (
     convert_financial_statements,
 )
@@ -12,12 +15,12 @@ from financetoolkit.base.models.normalization_model import (
 
 
 def get_financial_statements(
-    tickers: str | list[str],
-    statement: str = "",
-    api_key: str = "",
+    tickers,
+    statement = "",
+    api_key = "",
     quarter: bool = False,
-    limit: int = 100,
-    statement_format: pd.DataFrame = pd.DataFrame(),
+    limit = 100,
+    statement_format = pd.DataFrame(),
 ):
     """
     Retrieves financial statements (balance, income, or cash flow statements) for one or multiple companies,
@@ -100,7 +103,7 @@ def get_financial_statements(
     return financial_statement_total
 
 
-def get_profile(tickers: list[str] | str, api_key: str):
+def get_profile(tickers, api_key):
     """
     Description
     ----
@@ -124,7 +127,7 @@ def get_profile(tickers: list[str] | str, api_key: str):
     else:
         raise ValueError(f"Type for the tickers ({type(tickers)}) variable is invalid.")
 
-    profile_dataframe: pd.DataFrame = pd.DataFrame()
+    profile_dataframe = pd.DataFrame()
 
     for ticker in ticker_list:
         try:
@@ -137,7 +140,7 @@ def get_profile(tickers: list[str] | str, api_key: str):
     return profile_dataframe
 
 
-def get_quote(tickers: list[str] | str, api_key: str):
+def get_quote(tickers, api_key):
     """
     Description
     ----
@@ -161,7 +164,7 @@ def get_quote(tickers: list[str] | str, api_key: str):
     else:
         raise ValueError(f"Type for the tickers ({type(tickers)}) variable is invalid.")
 
-    quote_dataframe: pd.DataFrame = pd.DataFrame()
+    quote_dataframe = pd.DataFrame()
 
     for ticker in ticker_list:
         try:
@@ -175,7 +178,7 @@ def get_quote(tickers: list[str] | str, api_key: str):
 
 
 def get_enterprise(
-    tickers: list[str] | str, api_key: str, quarter: bool = False, limit: int = 100
+    tickers, api_key, quarter: bool = False, limit = 100
 ):
     """
     Description
@@ -244,7 +247,7 @@ def get_enterprise(
     return enterprise_dataframe
 
 
-def get_rating(tickers: list[str] | str, api_key: str, limit: int = 100):
+def get_rating(tickers, api_key, limit = 100):
     """
     Description
     ----

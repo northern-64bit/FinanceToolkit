@@ -5,8 +5,8 @@ import pandas as pd
 
 
 def get_debt_to_assets_ratio(
-    total_debt: float | pd.Series | pd.Series, total_assets: float | pd.Series
-) -> float | pd.Series:
+    total_debt , total_assets
+):
     """
     Calculate the debt to assets ratio, a solvency ratio that measures the proportion of a
     company's assets that are financed by debt.
@@ -18,14 +18,14 @@ def get_debt_to_assets_ratio(
         total_assets (float or pd.Series): Total assets of the company.
 
     Returns:
-        float | pd.Series: The debt ratio value.
+        float : The debt ratio value.
     """
     return total_debt / total_assets
 
 
 def get_debt_to_equity_ratio(
-    total_debt: float | pd.Series, total_equity: float | pd.Series
-) -> float | pd.Series:
+    total_debt, total_equity
+) :
     """
     Calculate the debt to equity ratio, a solvency ratio that measures the
     proportion of a company's equity that is financed by debt.
@@ -35,16 +35,16 @@ def get_debt_to_equity_ratio(
         total_equity (float or pd.Series): Total equity of the company.
 
     Returns:
-        float | pd.Series: The debt to equity ratio value.
+        float : The debt to equity ratio value.
     """
     return total_debt / total_equity
 
 
 def get_interest_coverage_ratio(
-    operating_income: float | pd.Series,
-    depreciation_and_amortization: float | pd.Series,
-    interest_expense: float | pd.Series,
-) -> float | pd.Series:
+    operating_income,
+    depreciation_and_amortization,
+    interest_expense,
+) :
     """
     Calculate the interest coverage ratio, a solvency ratio that measures a company's
     ability to pay its interest expenses on outstanding debt.
@@ -55,14 +55,14 @@ def get_interest_coverage_ratio(
         interest_expense (float or pd.Series): Total interest expense of the company.
 
     Returns:
-        float | pd.Series: The interest coverage ratio value.
+        float : The interest coverage ratio value.
     """
     return (operating_income + depreciation_and_amortization) / interest_expense
 
 
 def get_debt_service_coverage_ratio(
-    operating_income: float | pd.Series, current_liabilities: float | pd.Series
-) -> float | pd.Series:
+    operating_income, current_liabilities
+) :
     """
     Calculate the debt service coverage ratio, a solvency ratio that measures a company's
     ability to service its debt with its net operating income.
@@ -72,17 +72,17 @@ def get_debt_service_coverage_ratio(
         current_liabilities (float or pd.Series): Total debt service of the company.
 
     Returns:
-        float | pd.Series: The debt service coverage ratio value.
+        float : The debt service coverage ratio value.
     """
     return operating_income / current_liabilities
 
 
 def get_equity_multiplier(
-    total_assets_begin: float | pd.Series,
-    total_assets_end: float | pd.Series,
-    total_equity_begin: float | pd.Series,
-    total_equity_end: float | pd.Series,
-) -> float | pd.Series:
+    total_assets_begin,
+    total_assets_end,
+    total_equity_begin,
+    total_equity_end,
+) :
     """
     Calculate the equity multiplier, a solvency ratio that measures the degree to which a company
     uses borrowed money (debt) to finance its operations and growth.
@@ -96,7 +96,7 @@ def get_equity_multiplier(
         total_equity_end (float or pd.Series): Total equity at the end of the period.
 
     Returns:
-        float | pd.Series: The equity multiplier.
+        float : The equity multiplier.
     """
     return ((total_assets_begin + total_assets_end) / 2) / (
         (total_equity_begin + total_equity_end) / 2
@@ -104,8 +104,8 @@ def get_equity_multiplier(
 
 
 def get_free_cash_flow_yield(
-    free_cash_flow: float | pd.Series, market_capitalization: float | pd.Series
-) -> float | pd.Series:
+    free_cash_flow, market_capitalization
+) :
     """
     Calculates the free cash flow yield ratio, which measures the free cash flow
     relative to the market capitalization of the company.
@@ -115,16 +115,16 @@ def get_free_cash_flow_yield(
         market_capitalization (float or pd.Series): Market capitalization of the company.
 
     Returns:
-        float | pd.Series: The free cash flow yield ratio.
+        float : The free cash flow yield ratio.
     """
     return free_cash_flow / market_capitalization
 
 
 def get_net_debt_to_ebitda_ratio(
-    operating_income: float | pd.Series,
-    depreciation_and_amortization: float | pd.Series,
-    net_debt: float | pd.Series,
-) -> float | pd.Series:
+    operating_income,
+    depreciation_and_amortization,
+    net_debt,
+) :
     """
     Calculates the net debt to EBITDA ratio, which measures the net debt of the company
     relative to its EBITDA.
@@ -135,15 +135,15 @@ def get_net_debt_to_ebitda_ratio(
         net_debt (float or pd.Series): Net debt of the company.
 
     Returns:
-        float | pd.Series: The net debt to EBITDA ratio.
+        float : The net debt to EBITDA ratio.
     """
     return net_debt / (operating_income + depreciation_and_amortization)
 
 
 def get_cash_flow_coverage_ratio(
-    operating_cash_flow: float | pd.Series,
-    total_debt: float | pd.Series,
-) -> float | pd.Series:
+    operating_cash_flow,
+    total_debt,
+) :
     """
     Calculate the cash flow coverage ratio, a solvency ratio that measures a company's ability to pay off its debt
     with its operating cash flow.
@@ -153,14 +153,14 @@ def get_cash_flow_coverage_ratio(
         total_debt (float or pd.Series): Total debt of the company.
 
     Returns:
-        float | pd.Series: The cash flow coverage ratio value.
+        float : The cash flow coverage ratio value.
     """
     return operating_cash_flow / total_debt
 
 
 def get_capex_coverage_ratio(
-    cash_flow_from_operations: float | pd.Series, capital_expenditure: float | pd.Series
-) -> float | pd.Series:
+    cash_flow_from_operations, capital_expenditure
+) :
     """
     Calculate the capital expenditure coverage ratio, a solvency ratio that
     measures a company's ability to cover its capital expenditures with its
@@ -171,16 +171,16 @@ def get_capex_coverage_ratio(
         capital_expenditure (float or pd.Series): Capital expenditure of the company.
 
     Returns:
-        float | pd.Series: The capital expenditure coverage ratio value.
+        float : The capital expenditure coverage ratio value.
     """
     return cash_flow_from_operations / capital_expenditure
 
 
 def get_dividend_capex_coverage_ratio(
-    cash_flow_from_operations: float | pd.Series,
-    capital_expenditure: float | pd.Series,
-    dividends: float | pd.Series,
-) -> float | pd.Series:
+    cash_flow_from_operations,
+    capital_expenditure,
+    dividends,
+) :
     """
     Calculate the dividend paid and capex coverage ratio, a solvency ratio that
     measures a company's ability to cover both its capital expenditures and
@@ -192,6 +192,6 @@ def get_dividend_capex_coverage_ratio(
         dividends (float or pd.Series): Dividend payments of the company.
 
     Returns:
-        float | pd.Series: The dividend paid and capex coverage ratio value.
+        float : The dividend paid and capex coverage ratio value.
     """
     return cash_flow_from_operations / (capital_expenditure + dividends)

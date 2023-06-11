@@ -11,13 +11,13 @@ from financetoolkit.ratios import (
 
 
 def get_dupont_analysis(
-    net_income: float | pd.Series,
-    total_revenue: float | pd.Series,
-    total_assets_begin: float | pd.Series,
-    total_assets_end: float | pd.Series,
-    total_equity_begin: float | pd.Series,
-    total_equity_end: float | pd.Series,
-) -> pd.DataFrame:
+    net_income,
+    total_revenue,
+    total_assets_begin,
+    total_assets_end,
+    total_equity_begin,
+    total_equity_end,
+):
     """
     Perform a Dupont analysis to breakdown the return on equity (ROE) into its components.
 
@@ -67,21 +67,21 @@ def get_dupont_analysis(
 
 
 def get_extended_dupont_analysis(
-    operating_income: float | pd.Series,
-    income_before_tax: float | pd.Series,
-    net_income: float | pd.Series,
-    total_revenue: float | pd.Series,
-    total_assets_begin: float | pd.Series,
-    total_assets_end: float | pd.Series,
-    total_equity_begin: float | pd.Series,
-    total_equity_end: float | pd.Series,
-) -> pd.DataFrame:
+    operating_income,
+    income_before_tax,
+    net_income,
+    total_revenue,
+    total_assets_begin,
+    total_assets_end,
+    total_equity_begin,
+    total_equity_end,
+):
     """
     Perform am Extended Dupont analysis to breakdown the return on equity (ROE) into its components.
 
     Args:
         operating_income (float or pd.Series): Operating income of the company.
-        interest_expense (float or pd.Series): Interest expense of the company.
+        interest_expense (float or pd.Series)erest expense of the company.
         income_before_tax (float or pd.Series): Income before taxes of the company.
         net_income (float or pd.Series): Net profit of the company.
         total_revenue (float or pd.Series): Total revenue of the company.

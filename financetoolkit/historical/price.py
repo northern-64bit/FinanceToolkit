@@ -3,7 +3,7 @@
 import pandas as pd
 
 
-def get_returns(historical_data: pd.Series) -> pd.Series:
+def get_returns(historical_data):
     """
     Calculate the returns of historical data for a given Series, with an option to include a rolling period.
 
@@ -16,7 +16,7 @@ def get_returns(historical_data: pd.Series) -> pd.Series:
     return historical_data.pct_change()
 
 
-def get_volatility(returns: pd.Series) -> pd.Series:
+def get_volatility(returns):
     """
     Calculate the volatility of returns over a rolling window.
 
@@ -31,8 +31,8 @@ def get_volatility(returns: pd.Series) -> pd.Series:
 
 
 def get_sharpe_ratio(
-    returns: pd.Series, risk_free_rate: float | pd.Series
-) -> pd.Series:
+    returns, risk_free_rate
+):
     """
     Calculate the Sharpe ratio of returns over a rolling window.
 
@@ -49,8 +49,8 @@ def get_sharpe_ratio(
 
 
 def get_sortino_ratio(
-    returns: pd.Series, risk_free_rate: float | pd.Series
-) -> pd.Series:
+    returns, risk_free_rate
+):
     """
     Calculate the Sortino ratio of returns over a rolling window.
 
@@ -68,7 +68,7 @@ def get_sortino_ratio(
     return excess_returns / downside_volatility
 
 
-def get_beta(returns: pd.Series, benchmark_returns: pd.Series) -> pd.Series:
+def get_beta(returns, benchmark_returns):
     """
     Calculate the beta of returns with respect to a benchmark over a rolling window.
 
