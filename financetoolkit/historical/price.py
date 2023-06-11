@@ -1,6 +1,5 @@
 """Price Module"""
 
-import pandas as pd
 
 
 def get_returns(historical_data):
@@ -30,9 +29,7 @@ def get_volatility(returns):
     return returns.std()
 
 
-def get_sharpe_ratio(
-    returns, risk_free_rate
-):
+def get_sharpe_ratio(returns, risk_free_rate):
     """
     Calculate the Sharpe ratio of returns over a rolling window.
 
@@ -48,9 +45,7 @@ def get_sharpe_ratio(
     return excess_returns / returns.std()
 
 
-def get_sortino_ratio(
-    returns, risk_free_rate
-):
+def get_sortino_ratio(returns, risk_free_rate):
     """
     Calculate the Sortino ratio of returns over a rolling window.
 

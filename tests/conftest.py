@@ -33,7 +33,7 @@ EXTENSIONS_MATCHING: dict[str, list[type]] = {
 
 class Record:
     @staticmethod
-    def extract_string(data: Any, **kwargs) :
+    def extract_string(data: Any, **kwargs):
         if isinstance(data, tuple(EXTENSIONS_MATCHING["txt"])):
             string_value = data
         elif isinstance(data, tuple(EXTENSIONS_MATCHING["csv"])):
@@ -62,15 +62,15 @@ class Record:
             return None
 
     @property
-    def captured(self) :
+    def captured(self):
         return self.__captured
 
     @property
-    def strip(self) :
+    def strip(self):
         return self.__strip
 
     @property
-    def record_changed(self) :
+    def record_changed(self):
         if self.__recorded is None:
             changed = True
         elif self.__strip and self.__recorded.strip() != self.__captured.strip():
@@ -83,11 +83,11 @@ class Record:
         return changed
 
     @property
-    def record_exists(self) :
+    def record_exists(self):
         return self.__recorded is not None
 
     @property
-    def record_path(self) :
+    def record_path(self):
         return self.__record_path
 
     @property
@@ -98,9 +98,7 @@ class Record:
         record_path = self.__record_path
         self.__recorded = self.load_string(path=record_path)
 
-    def __init__(
-        self, captured: Any, record_path, strip: bool = False, **kwargs
-    ) :
+    def __init__(self, captured: Any, record_path, strip: bool = False, **kwargs):
         self.__captured = self.extract_string(data=captured, **kwargs)
         self.__record_path = record_path
         self.__strip = strip
@@ -137,12 +135,12 @@ class PathTemplate:
                 return extension
         raise Exception(f"No extension found for this type : {type(data)}")
 
-    def __init__(self, module_dir, module_name, test_name) :
+    def __init__(self, module_dir, module_name, test_name):
         self.__module_dir = module_dir
         self.__module_name = module_name
         self.__test_name = test_name
 
-    def build_path_by_extension(self, extension, index = 0):
+    def build_path_by_extension(self, extension, index=0):
         if extension not in EXTENSIONS_ALLOWED:
             raise Exception(f"Unsupported extension : {extension}")
 
@@ -156,14 +154,14 @@ class PathTemplate:
 
         return path
 
-    def build_path_by_data(self, data: Any, index = 0):
+    def build_path_by_data(self, data: Any, index=0):
         extension = self.find_extension(data=data)
         return self.build_path_by_extension(extension=extension, index=index)
 
 
 class Recorder:
     @property
-    def display_limit(self) :
+    def display_limit(self):
         return self.__display_limit
 
     @display_limit.setter
@@ -171,7 +169,7 @@ class Recorder:
         self.__display_limit = display_limit
 
     @property
-    def rewrite_expected(self) :
+    def rewrite_expected(self):
         return self.__rewrite_expected
 
     @rewrite_expected.setter
@@ -183,7 +181,7 @@ class Recorder:
         return self.__path_template
 
     @property
-    def record_mode(self) :
+    def record_mode(self):
         return self.__record_mode
 
     @record_mode.setter
@@ -194,9 +192,9 @@ class Recorder:
         self,
         path_template: PathTemplate,
         record_mode,
-        display_limit = DISPLAY_LIMIT,
+        display_limit=DISPLAY_LIMIT,
         rewrite_expected: bool = False,
-    ) :
+    ):
         self.__path_template = path_template
         self.__record_mode = record_mode
         self.__display_limit = display_limit
@@ -265,7 +263,7 @@ class Recorder:
 
 def build_path_by_extension(
     request: SubRequest, extension, create_folder: bool = False
-) :
+):
     # SETUP PATH TEMPLATE
     module_dir = request.node.fspath.dirname
     module_name = request.node.fspath.purebasename
@@ -341,23 +339,23 @@ def pytest_addoption(parser: Parser):
 
 
 @pytest.fixture(scope="session")  # type: ignore
-def rewrite_expected(request: SubRequest) :
+def rewrite_expected(request: SubRequest):
     """Force rewriting of all expected data by : `record_stdout` and `recorder`."""
     return request.config.getoption("--rewrite-expected")
 
 
 @pytest.fixture
-def default_csv_path(request: SubRequest) :
+def default_csv_path(request: SubRequest):
     return build_path_by_extension(request=request, extension="csv", create_folder=True)
 
 
 @pytest.fixture
-def default_txt_path(request: SubRequest) :
+def default_txt_path(request: SubRequest):
     return build_path_by_extension(request=request, extension="txt", create_folder=True)
 
 
 @pytest.fixture
-def default_json_path(request: SubRequest) :
+def default_json_path(request: SubRequest):
     return build_path_by_extension(
         request=request, extension="json", create_folder=True
     )

@@ -8,7 +8,7 @@ def get_earnings_per_share(
     net_income,
     preferred_dividends,
     average_outstanding_shares,
-) :
+):
     """
     Calculate the earnings per share (EPS), a valuation ratio that measures the
     amount of net income earned per share of outstanding common stock.
@@ -24,9 +24,7 @@ def get_earnings_per_share(
     return (net_income - preferred_dividends) / average_outstanding_shares
 
 
-def get_revenue_per_share(
-    total_revenue, shares_outstanding
-) :
+def get_revenue_per_share(total_revenue, shares_outstanding):
     """
     Calculate the revenue per share, a valuation ratio that measures the amount of
     revenue generated per outstanding share of a company's stock.
@@ -41,9 +39,7 @@ def get_revenue_per_share(
     return total_revenue / shares_outstanding
 
 
-def get_price_earnings_ratio(
-    stock_price, earnings_per_share
-) :
+def get_price_earnings_ratio(stock_price, earnings_per_share):
     """
     Calculate the price earnings ratio (P/E), a valuation ratio that compares a company's
     stock price to its earnings per share.
@@ -78,9 +74,7 @@ def get_earnings_per_share_growth(
     raise TypeError("earnings_per_share must be a pd.Series or pd.DataFrame object.")
 
 
-def get_price_to_earnings_growth_ratio(
-    price_earnings, earnings_per_share_growth
-) :
+def get_price_to_earnings_growth_ratio(price_earnings, earnings_per_share_growth):
     """
     Calculate the price earnings to growth (PEG) ratio, a valuation metric that measures the ratio
     of the price-to-earnings ratio to earnings growth rate.
@@ -99,7 +93,7 @@ def get_book_value_per_share(
     total_shareholder_equity,
     preferred_equity,
     common_shares_outstanding,
-) :
+):
     """
     Calculate the book value per share, a valuation ratio that measures the amount of
     common equity value per share outstanding.
@@ -115,9 +109,7 @@ def get_book_value_per_share(
     return (total_shareholder_equity - preferred_equity) / common_shares_outstanding
 
 
-def get_price_to_book_ratio(
-    price_per_share, book_value_per_share
-) :
+def get_price_to_book_ratio(price_per_share, book_value_per_share):
     """
     Calculate the price to book ratio, a valuation ratio that compares a company's market
     price to its book value per share.
@@ -136,7 +128,7 @@ def get_interest_debt_per_share(
     interest_expense,
     total_debt,
     shares_outstanding,
-) :
+):
     """
     Calculate the interest debt per share, a valuation ratio that measures the
     amount of interest expense incurred per outstanding share of a company's stock.
@@ -152,9 +144,7 @@ def get_interest_debt_per_share(
     return (interest_expense / total_debt) * shares_outstanding
 
 
-def get_capex_per_share(
-    capital_expenditures, shares_outstanding
-) :
+def get_capex_per_share(capital_expenditures, shares_outstanding):
     """
     Calculate the capex per share, a valuation ratio that measures the amount of
     capital expenditures made per outstanding share of a company's stock.
@@ -173,7 +163,7 @@ def get_dividend_yield(
     dividends_paid,
     shares_outstanding,
     stock_price,
-) :
+):
     """
     Calculate the dividend yield ratio, a valuation ratio that measures the amount of
     dividends distributed per share of stock relative to the stock's price.
@@ -189,9 +179,7 @@ def get_dividend_yield(
     return (dividends_paid / shares_outstanding) / stock_price
 
 
-def get_price_to_cash_flow_ratio(
-    market_cap, operations_cash_flow
-) :
+def get_price_to_cash_flow_ratio(market_cap, operations_cash_flow):
     """
     Calculate the price to cash flow ratio, a valuation ratio that compares a company's market
     price to its cash flow per share.
@@ -206,9 +194,7 @@ def get_price_to_cash_flow_ratio(
     return market_cap / operations_cash_flow
 
 
-def get_price_to_free_cash_flow_ratio(
-    market_cap, free_cash_flow
-) :
+def get_price_to_free_cash_flow_ratio(market_cap, free_cash_flow):
     """
     Calculate the price to free cash flow ratio, a valuation ratio that compares a company's market
     price to its free cash flow per share.
@@ -226,7 +212,7 @@ def get_price_to_free_cash_flow_ratio(
 def get_market_cap(
     share_price,
     total_shares_outstanding,
-) :
+):
     """
     Calculates the market capitalization of the company.
 
@@ -248,7 +234,7 @@ def get_enterprise_value(
     minority_interest,
     preferred_equity,
     cash_and_cash_equivalents,
-) :
+):
     """
     Calculates the Enterprise Value (EV) of a company. The Enterprise Value (EV)
     is a measure of a company's total value, often used as a more comprehensive
@@ -277,9 +263,7 @@ def get_enterprise_value(
     )
 
 
-def get_ev_to_sales_ratio(
-    enterprise_value, total_revenue
-) :
+def get_ev_to_sales_ratio(enterprise_value, total_revenue):
     """
     Calculate the EV to sales ratio, a valuation ratio that compares a company's enterprise value
     (EV) to its total revenue.
@@ -298,7 +282,7 @@ def get_ev_to_ebitda_ratio(
     enterprise_value,
     operating_income,
     depreciation_and_amortization,
-) :
+):
     """
     Calculates the enterprise value over EBITDA ratio, which is a valuation ratio
     that measures a company's total value (including debt and equity) relative to its
@@ -316,9 +300,7 @@ def get_ev_to_ebitda_ratio(
     return enterprise_value / (operating_income + depreciation_and_amortization)
 
 
-def get_ev_to_operating_cashflow_ratio(
-    enterprise_value, operating_cashflow
-) :
+def get_ev_to_operating_cashflow_ratio(enterprise_value, operating_cashflow):
     """
     Calculates the enterprise value over operating cash flow ratio, which is a valuation ratio
     that measures a company's total value (including debt and equity) relative to its
@@ -335,9 +317,7 @@ def get_ev_to_operating_cashflow_ratio(
     return enterprise_value / operating_cashflow
 
 
-def get_earnings_yield(
-    earnings_per_share, market_price_per_share
-) :
+def get_earnings_yield(earnings_per_share, market_price_per_share):
     """
     Calculates the earnings yield ratio, which measures the earnings per share relative
     to the market price per share.
@@ -352,9 +332,7 @@ def get_earnings_yield(
     return earnings_per_share / market_price_per_share
 
 
-def get_payout_ratio(
-    dividends, net_income
-) :
+def get_payout_ratio(dividends, net_income):
     """
     Calculates the payout ratio, which measures the proportion of net income paid out as
     dividends to shareholders.
@@ -373,7 +351,7 @@ def get_tangible_asset_value(
     total_assets,
     total_liabilities,
     goodwill,
-) :
+):
     """
     Calculate the tangible asset value, which represents the total value of a company's assets
     that can be used to generate revenue.
@@ -392,7 +370,7 @@ def get_tangible_asset_value(
 def get_net_current_asset_value(
     total_current_assets,
     total_current_liabilities,
-) :
+):
     """
     Calculate the net current asset value, which is the total value of a company's current assets
     minus its current liabilities.
@@ -410,7 +388,7 @@ def get_net_current_asset_value(
 def get_ev_to_ebit(
     enterprise_value,
     earnings_before_interest_and_taxes,
-) :
+):
     """
     Calculate the enterprise value multiplier, a financial ratio that measures the total value of a
     company's operations (including debt and equity) relative to its earnings before interest and taxes.

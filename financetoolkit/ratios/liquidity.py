@@ -1,12 +1,9 @@
 """Liquidity Module"""
 __docformat__ = "numpy"
 
-import pandas as pd
 
 
-def get_current_ratio(
-    current_assets, current_liabilities
-) :
+def get_current_ratio(current_assets, current_liabilities):
     """
     Calculate the current ratio, a liquidity ratio that measures a company's ability
     to pay off its short-term liabilities with its current assets.
@@ -28,7 +25,7 @@ def get_quick_ratio(
     accounts_receivable,
     marketable_securities,
     current_liabilities,
-) :
+):
     """
     Calculate the quick ratio (also known as the acid-test ratio), a more stringent
     measure of liquidity that excludes inventory from current assets.
@@ -53,7 +50,7 @@ def get_cash_ratio(
     cash_and_equivalents,
     marketable_securities,
     current_liabilities,
-) :
+):
     """
     Calculate the cash ratio, a liquidity ratio that measures a company's ability
     to pay off its short-term liabilities with its cash and cash equivalents.
@@ -69,9 +66,7 @@ def get_cash_ratio(
     return (cash_and_equivalents + marketable_securities) / current_liabilities
 
 
-def get_working_capital(
-    current_assets, current_liabilities
-) :
+def get_working_capital(current_assets, current_liabilities):
     """
     Calculate the working capital, which is the difference between a company's current assets
     and current liabilities.
@@ -86,9 +81,7 @@ def get_working_capital(
     return current_assets - current_liabilities
 
 
-def get_operating_cash_flow_ratio(
-    operating_cash_flow, current_liabilities
-) :
+def get_operating_cash_flow_ratio(operating_cash_flow, current_liabilities):
     """
     Calculate the operating cash flow ratio, a liquidity ratio that measures a company's
     ability to pay off its current liabilities with its operating cash flow.
@@ -103,9 +96,7 @@ def get_operating_cash_flow_ratio(
     return operating_cash_flow / current_liabilities
 
 
-def get_operating_cash_flow_sales_ratio(
-    operating_cash_flow, revenue
-) :
+def get_operating_cash_flow_sales_ratio(operating_cash_flow, revenue):
     """
     Calculate the operating cash flow to sales ratio, a liquidity ratio that measures the ability of a company to generate
     cash from its sales.
@@ -125,7 +116,7 @@ def get_short_term_coverage_ratio(
     accounts_receivable,
     inventory,
     accounts_payable,
-) :
+):
     """
     Calculate the short term coverage ratio, a liquidity ratio that measures a company's ability to pay off its
     short-term obligations with its operating cash flow.

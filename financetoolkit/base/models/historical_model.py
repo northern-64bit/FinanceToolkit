@@ -3,17 +3,14 @@ __docformat__ = "numpy"
 
 from datetime import datetime, timedelta
 
-from typing import List
-
-
 import pandas as pd
 
 
 def get_historical_data(
     tickers,
-    start = None,
-    end = None,
-    interval = "1d",
+    start=None,
+    end=None,
+    interval="1d",
 ):
     """
     Retrieves historical stock data for the given ticker(s) from Yahoo! Finance API for a specified period.

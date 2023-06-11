@@ -2,9 +2,9 @@
 __docformat__ = "numpy"
 
 
-import pandas as pd
-
 from warnings import warn
+
+import pandas as pd
 
 from financetoolkit.base.models.fundamentals_model import (
     get_enterprise as _get_enterprise,
@@ -42,12 +42,12 @@ class Toolkit:
     def __init__(
         self,
         tickers,
-        api_key = "",
-        historical = pd.DataFrame(),
-        balance = pd.DataFrame(),
-        income = pd.DataFrame(),
-        cash = pd.DataFrame(),
-        format_location = "",
+        api_key="",
+        historical=pd.DataFrame(),
+        balance=pd.DataFrame(),
+        income=pd.DataFrame(),
+        cash=pd.DataFrame(),
+        format_location="",
         reverse_dates: bool = False,
     ):
         """
@@ -126,7 +126,7 @@ class Toolkit:
         )
 
         warn(
-            "This version of the Finance Toolkit is deprecated. Finance Toolkit 1.0.2 and onwards require Python 3.10 and higher. Please update to the latest version of Python and the Finance Toolkit.",
+            "This version of the Finance Toolkit is depreciated. Finance Toolkit 1.0.3 and onwards require Python 3.10 and higher. Please update to the latest version of Python and the Finance Toolkit.",
             DeprecationWarning,
             stacklevel=2,
         )
@@ -255,7 +255,7 @@ class Toolkit:
 
         return self._quote
 
-    def get_enterprise(self, quarter = False, limit = 100):
+    def get_enterprise(self, quarter=False, limit=100):
         """
         Returns a pandas dataframe containing the enterprise value information for the specified tickers.
 
@@ -281,7 +281,7 @@ class Toolkit:
 
         return self._enterprise
 
-    def get_rating(self, limit = 100):
+    def get_rating(self, limit=100):
         """
         Returns a pandas dataframe containing the stock rating information for the specified tickers.
 
@@ -304,7 +304,7 @@ class Toolkit:
 
         return self._rating
 
-    def get_historical_data(self, start=None, end=None, period = "daily"):
+    def get_historical_data(self, start=None, end=None, period="daily"):
         """
         Returns a pandas dataframe containing the historical data for the specified tickers.
 
@@ -380,7 +380,7 @@ class Toolkit:
     def get_balance_sheet_statement(
         self,
         quarter=False,
-        limit = 100,
+        limit=100,
         overwrite: bool = False,
     ):
         """
@@ -415,7 +415,7 @@ class Toolkit:
     def get_income_statement(
         self,
         quarter=False,
-        limit = 100,
+        limit=100,
         overwrite: bool = False,
     ):
         """
@@ -450,7 +450,7 @@ class Toolkit:
     def get_cash_flow_statement(
         self,
         quarter=False,
-        limit = 100,
+        limit=100,
         overwrite: bool = False,
     ):
         """
@@ -482,7 +482,7 @@ class Toolkit:
 
         return self._cash_flow_statement
 
-    def get_normalization_files(self, path = ""):
+    def get_normalization_files(self, path=""):
         """
         Copies the normalization files to a folder based on path. By default, this is the path
         of the 'Downloads' folder.

@@ -1,12 +1,9 @@
 """Solvency Module"""
 __docformat__ = "numpy"
 
-import pandas as pd
 
 
-def get_debt_to_assets_ratio(
-    total_debt , total_assets
-):
+def get_debt_to_assets_ratio(total_debt, total_assets):
     """
     Calculate the debt to assets ratio, a solvency ratio that measures the proportion of a
     company's assets that are financed by debt.
@@ -23,9 +20,7 @@ def get_debt_to_assets_ratio(
     return total_debt / total_assets
 
 
-def get_debt_to_equity_ratio(
-    total_debt, total_equity
-) :
+def get_debt_to_equity_ratio(total_debt, total_equity):
     """
     Calculate the debt to equity ratio, a solvency ratio that measures the
     proportion of a company's equity that is financed by debt.
@@ -44,7 +39,7 @@ def get_interest_coverage_ratio(
     operating_income,
     depreciation_and_amortization,
     interest_expense,
-) :
+):
     """
     Calculate the interest coverage ratio, a solvency ratio that measures a company's
     ability to pay its interest expenses on outstanding debt.
@@ -60,9 +55,7 @@ def get_interest_coverage_ratio(
     return (operating_income + depreciation_and_amortization) / interest_expense
 
 
-def get_debt_service_coverage_ratio(
-    operating_income, current_liabilities
-) :
+def get_debt_service_coverage_ratio(operating_income, current_liabilities):
     """
     Calculate the debt service coverage ratio, a solvency ratio that measures a company's
     ability to service its debt with its net operating income.
@@ -82,7 +75,7 @@ def get_equity_multiplier(
     total_assets_end,
     total_equity_begin,
     total_equity_end,
-) :
+):
     """
     Calculate the equity multiplier, a solvency ratio that measures the degree to which a company
     uses borrowed money (debt) to finance its operations and growth.
@@ -103,9 +96,7 @@ def get_equity_multiplier(
     )
 
 
-def get_free_cash_flow_yield(
-    free_cash_flow, market_capitalization
-) :
+def get_free_cash_flow_yield(free_cash_flow, market_capitalization):
     """
     Calculates the free cash flow yield ratio, which measures the free cash flow
     relative to the market capitalization of the company.
@@ -124,7 +115,7 @@ def get_net_debt_to_ebitda_ratio(
     operating_income,
     depreciation_and_amortization,
     net_debt,
-) :
+):
     """
     Calculates the net debt to EBITDA ratio, which measures the net debt of the company
     relative to its EBITDA.
@@ -143,7 +134,7 @@ def get_net_debt_to_ebitda_ratio(
 def get_cash_flow_coverage_ratio(
     operating_cash_flow,
     total_debt,
-) :
+):
     """
     Calculate the cash flow coverage ratio, a solvency ratio that measures a company's ability to pay off its debt
     with its operating cash flow.
@@ -158,9 +149,7 @@ def get_cash_flow_coverage_ratio(
     return operating_cash_flow / total_debt
 
 
-def get_capex_coverage_ratio(
-    cash_flow_from_operations, capital_expenditure
-) :
+def get_capex_coverage_ratio(cash_flow_from_operations, capital_expenditure):
     """
     Calculate the capital expenditure coverage ratio, a solvency ratio that
     measures a company's ability to cover its capital expenditures with its
@@ -180,7 +169,7 @@ def get_dividend_capex_coverage_ratio(
     cash_flow_from_operations,
     capital_expenditure,
     dividends,
-) :
+):
     """
     Calculate the dividend paid and capex coverage ratio, a solvency ratio that
     measures a company's ability to cover both its capital expenditures and

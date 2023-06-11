@@ -1,12 +1,9 @@
 """Efficncy Module"""
 __docformat__ = "numpy"
 
-import pandas as pd
 
 
-def get_asset_turnover_ratio(
-    sales, total_assets_begin, total_assets_end
-) :
+def get_asset_turnover_ratio(sales, total_assets_begin, total_assets_end):
     """
     Calculate the asset turnover ratio, an efficiency ratio that measures how
     efficiently a company uses its assets to generate sales.
@@ -26,7 +23,7 @@ def get_inventory_turnover_ratio(
     cost_of_goods_sold,
     inventory_begin,
     inventory_end,
-) :
+):
     """
     Calculate the inventory turnover ratio, an efficiency ratio that measures
     how quickly a company sells its inventory.
@@ -46,8 +43,8 @@ def get_days_of_inventory_outstanding(
     inventory_begin,
     inventory_end,
     cost_of_goods_sold,
-    days = 365,
-) :
+    days=365,
+):
     """
     Calculate the days sales in inventory ratio, an efficiency ratio that measures
     how long it takes a company to sell its inventory.
@@ -68,8 +65,8 @@ def get_days_of_sales_outstanding(
     accounts_receivable_begin,
     accounts_receivable_end,
     net_credit_sales,
-    days = 365,
-) :
+    days=365,
+):
     """
     Calculate the days of sales outstanding, an efficiency ratio that measures
     the average number of days it takes a company to collect payment on its
@@ -91,9 +88,7 @@ def get_days_of_sales_outstanding(
     )
 
 
-def get_operating_cycle(
-    days_of_inventory, days_of_sales_outstanding
-) :
+def get_operating_cycle(days_of_inventory, days_of_sales_outstanding):
     """
     Calculate the operating cycle, an efficiency ratio that measures the average
     number of days it takes a company to turn its inventory into cash.
@@ -113,7 +108,7 @@ def get_accounts_payables_turnover_ratio(
     cost_of_goods_sold,
     accounts_payable_begin,
     accounts_payable_end,
-) :
+):
     """
     Calculate the accounts payable turnover ratio is an efficiency ratio that measures how
     quickly a company pays its suppliers.
@@ -133,8 +128,8 @@ def get_days_of_accounts_payable_outstanding(
     cost_of_goods_sold,
     accounts_payable_begin,
     accounts_payable_end,
-    days = 365,
-) :
+    days=365,
+):
     """
     Calculate the days payables outstanding, an efficiency ratio that measures the
     number of days it takes a company to pay its suppliers.
@@ -159,7 +154,7 @@ def get_cash_conversion_cycle(
     days_inventory,
     days_sales_outstanding,
     days_payables_outstanding,
-) :
+):
     """
     Calculate the Cash Conversion Cycle, which measures the amount of time it takes for a company to convert
     its investments in inventory and accounts receivable into cash, while considering the time it takes to pay
@@ -180,7 +175,7 @@ def get_receivables_turnover(
     accounts_receivable_begin,
     accounts_receivable_end,
     net_credit_sales,
-) :
+):
     """
     Calculate the receivables turnover, a ratio that measures how efficiently a
     company uses its assets by comparing the amount of credit extended to customers to
@@ -198,9 +193,7 @@ def get_receivables_turnover(
     ) / net_credit_sales
 
 
-def get_sga_to_revenue_ratio(
-    sga_expenses, revenue
-) :
+def get_sga_to_revenue_ratio(sga_expenses, revenue):
     """
     Calculates the sales, general, and administrative (SG&A) expenses to revenue ratio,
     which measures the SG&A expenses relative to the revenue of the company.
@@ -219,7 +212,7 @@ def get_fixed_asset_turnover(
     net_sales,
     net_fixed_assets_begin,
     net_fixed_assets_end,
-) :
+):
     """
     Calculate the Fixed Asset Turnover ratio, an efficiency ratio that
     measures how efficiently a company uses its fixed assets to generate sales.
@@ -239,7 +232,7 @@ def get_operating_ratio(
     operating_expenses,
     cost_of_goods_sold,
     revenue,
-) :
+):
     """
     Calculate the operating ratio, a financial metric that measures the efficiency
     of a company's operations by comparing its operating expenses to its revenue.

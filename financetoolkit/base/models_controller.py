@@ -1,9 +1,8 @@
 """Models Module"""
 __docformat__ = "numpy"
 
-import pandas as pd
 
-from typing import List
+import pandas as pd
 
 from financetoolkit.base.helpers import handle_errors
 from financetoolkit.models.dupont import (

@@ -2,10 +2,8 @@
 __docformat__ = "numpy"
 
 
+
 import pandas as pd
-
-from typing import List
-
 
 from financetoolkit.base.models.normalization_model import (
     convert_financial_statements,
@@ -16,11 +14,11 @@ from financetoolkit.base.models.normalization_model import (
 
 def get_financial_statements(
     tickers,
-    statement = "",
-    api_key = "",
+    statement="",
+    api_key="",
     quarter: bool = False,
-    limit = 100,
-    statement_format = pd.DataFrame(),
+    limit=100,
+    statement_format=pd.DataFrame(),
 ):
     """
     Retrieves financial statements (balance, income, or cash flow statements) for one or multiple companies,
@@ -177,9 +175,7 @@ def get_quote(tickers, api_key):
     return quote_dataframe
 
 
-def get_enterprise(
-    tickers, api_key, quarter: bool = False, limit = 100
-):
+def get_enterprise(tickers, api_key, quarter: bool = False, limit=100):
     """
     Description
     ----
@@ -247,7 +243,7 @@ def get_enterprise(
     return enterprise_dataframe
 
 
-def get_rating(tickers, api_key, limit = 100):
+def get_rating(tickers, api_key, limit=100):
     """
     Description
     ----

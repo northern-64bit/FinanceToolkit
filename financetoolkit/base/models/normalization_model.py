@@ -8,7 +8,7 @@ import pandas as pd
 import pkg_resources
 
 
-def read_normalization_file(statement, format_location = ""):
+def read_normalization_file(statement, format_location=""):
     """
     This function copies the normalization files as found inside the environment and saves them
     to a custom location defined by the user. This is designed to make it possible to edit these files
@@ -37,7 +37,7 @@ def read_normalization_file(statement, format_location = ""):
 
 def convert_financial_statements(
     financial_statements,
-    statement_format = pd.DataFrame(),
+    statement_format=pd.DataFrame(),
     reverse_dates: bool = False,
 ):
     """
@@ -79,8 +79,8 @@ def convert_financial_statements(
 
 
 def copy_normalization_files(
-    format_location = "",
-    save_location = Path(Path.home(), "Downloads"),
+    format_location="",
+    save_location=Path(Path.home(), "Downloads"),
 ):
     """
     This function copies the normalization files as found inside the environment and saves them

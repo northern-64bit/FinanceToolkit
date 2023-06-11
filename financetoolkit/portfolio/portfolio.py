@@ -2,12 +2,9 @@
 __docformat__ = "numpy"
 
 import numpy as np
-import pandas as pd
 
 
-def get_tracking_error(
-    portfolio_returns, benchmark_returns
-):
+def get_tracking_error(portfolio_returns, benchmark_returns):
     """
     Calculate the tracking error, a measure of the deviation of a portfolio's returns
     from its benchmark.
@@ -21,7 +18,7 @@ def get_tracking_error(
     return np.std(portfolio_returns - benchmark_returns)
 
 
-def get_payoff_ratio(returns) :
+def get_payoff_ratio(returns):
     """
     Calculate the Payoff Ratio, a ratio that measures the ability of a trading strategy
     to generate profits relative to its losses.
@@ -57,7 +54,7 @@ def get_profit_factor(returns):
 def get_jensens_alpha(
     returns,
     benchmark_returns,
-    risk_free_rate = 0.0,
+    risk_free_rate=0.0,
 ):
     """
     Calculates the Jensen's alpha for the given returns series relative to the given benchmark returns series.
@@ -163,9 +160,7 @@ def get_calmar_ratio(returns):
     return average_return / maximum_drawdown
 
 
-def get_kelly_criterion(
-    win_probability, win_loss_ratio
-):
+def get_kelly_criterion(win_probability, win_loss_ratio):
     """
     Calculates the Kelly criterion for the given win and loss probabilities.
 

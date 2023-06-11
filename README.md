@@ -5,7 +5,7 @@
 [![PYPI Version](https://img.shields.io/pypi/v/FinanceToolkit)](https://pypi.org/project/FinanceToolkit/)
 [![PYPI Downloads](https://img.shields.io/pypi/dm/FinanceToolkit)](https://pypi.org/project/FinanceToolkit/)
 
-**NOTE: THIS VERSION HAS ALL TYPING REMOVED AND THUS SUPPORTS PYTHON VERSIONS LESS THAN PYTHON 3.10. THIS IS MERELY MEANT TO SUPPORT THOSE WHO HAVEN"T UPDATED YET AND WON"T BE MAINTAINED FURTHER. PLEASE VISIT THE LATEST BUILD AND UPDATE PYTHON ACCORDINGLY**
+**NOTE: THIS VERSION HAS ALL TYPING REMOVED AND THUS SUPPORTS PYTHON VERSIONS LESS THAN PYTHON 3.10. THIS IS MERELY MEANT TO SUPPORT THOSE WHO HAVEN'T UPDATED YET AND WON'T BE MAINTAINED FURTHER. PLEASE VISIT THE LATEST BUILD AND UPDATE PYTHON ACCORDINGLY.**
 
 While browsing a variety of websites, I kept finding that the same financial metric can greatly vary per source and so do the financial statements reported while little information is given how the metric was calculated.
 
